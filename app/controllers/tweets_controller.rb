@@ -4,10 +4,12 @@ class TweetsController < ApplicationController
   # GET /tweets or /tweets.json
   def index
     @tweets = Tweet.all
+    @users = User.all
   end
 
   # GET /tweets/1 or /tweets/1.json
   def show
+    @users = User.all
   end
 
   # GET /tweets/new
@@ -22,6 +24,7 @@ class TweetsController < ApplicationController
   # POST /tweets or /tweets.json
   def create
     @tweet = Tweet.new(tweet_params)
+    @tweet.user = current_user
 
     respond_to do |format|
       if @tweet.save
@@ -31,6 +34,7 @@ class TweetsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
+
     end
   end
 
