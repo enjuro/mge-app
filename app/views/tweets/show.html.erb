@@ -9,20 +9,23 @@
   <strong>User:</strong>
   <%= @tweet.user_id %>
 </p>
-
-<%= link_to '編集', edit_tweet_path(@tweet) %> |
+<% if @tweet.id == current_user.id %>
+  <%= link_to '編集', edit_tweet_path(@tweet) %>
+<% end %>|
 <%= link_to '戻る', tweets_path %>
 
-<% if @tweet.favorited_by?(current_user) %>
-  <p>
-    <%= link_to tweet_favorites_path(@tweet), method: :delete do %>
-      ✋<%= @tweet.favorites.count %> 参加希望
-    <% end %>
-  </p>
-<% else %>
-  <p>
-    <%= link_to tweet_favorites_path(@tweet), method: :post do %>
-      ✊<%= @tweet.favorites.count %> 参加を希望する
-    <% end %>
-  </p>
+<% if @tweet.id != current_user.id %>
+  <% if @tweet.favorited_by?(current_user) %>
+    <p>
+      <%= link_to tweet_favorites_path(@tweet), method: :delete do %>
+        ✋<%= @tweet.favorites.count %> 参加希望
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to tweet_favorites_path(@tweet), method: :post do %>
+        ✊<%= @tweet.favorites.count %> 参加を希望する
+      <% end %>
+    </p>
+  <% end %>
 <% end %>
