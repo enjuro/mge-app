@@ -1,10 +1,11 @@
-<h1>MGE match makerへようこそ</h1>
+<div class="center jumbotron">
+    <h1>MGE match maker</h1>
 
-
-<% if user_signed_in? %>
-    <h4>募集があるか見てみましょう</h4>
-    <%= link_to "募集一覧", "tweets" %>
-<% else %>
-    <h4>まずは登録してください！</h4>
-    <%= link_to "新規登録", new_user_registration_path %>
-<% end %>
+    <% if user_signed_in? %>
+        <h4>募集があるか見てみましょう</h4>
+        <%= link_to "募集一覧", "tweets", class: "btn btn-lg btn-primary" %>
+    <% else %>
+        <h4>まずは登録してください！</h4>
+        <%= link_to "新規登録", new_user_registration_path, "btn btn-lg btn-primary" %>
+    <% end %>
+</div>
