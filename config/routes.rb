@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :tweets, only: [:new, :edit, :create, :index, :show, :destroy] do
+  resources :tweets, only: [:new, :edit, :create, :update, :index, :show, :destroy] do
     resource :favorites, only: [:create, :destroy]
   end
   devise_for :users

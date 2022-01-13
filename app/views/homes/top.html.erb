@@ -1,1 +1,10 @@
-<h1>トップページ</h1>
+<h1>MGE match makerへようこそ</h1>
+
+
+<% if user_signed_in? %>
+    <h4>募集があるか見てみましょう</h4>
+    <%= link_to "募集一覧", "tweets" %>
+<% else %>
+    <h4>まずは登録してください！</h4>
+    <%= link_to "新規登録", new_user_registration_path %>
+<% end %>
