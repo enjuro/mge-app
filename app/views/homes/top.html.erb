@@ -2,6 +2,9 @@
     <h1>MGE match maker</h1>
 
     <% if user_signed_in? %>
+        <h3>
+        <%= "ようこそ、#{current_user.name}さん" %>
+
         <h4>募集があるか見てみましょう</h4>
         <%= link_to "募集一覧", "tweets", class:"btn btn-lg btn-primary" %>
     <% else %>

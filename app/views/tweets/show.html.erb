@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>投稿内容:</strong>
   <%= @tweet.content %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @tweet.user_id %>
+  <strong>投稿者:</strong>
+  <%= @users[@tweet.user_id - 1].name %>
 </p>
 <% if @tweet.id == current_user.id %>
   <%= link_to '編集', edit_tweet_path(@tweet) %>
@@ -18,7 +18,7 @@
   <% if @tweet.favorited_by?(current_user) %>
     <p>
       <%= link_to tweet_favorites_path(@tweet), method: :delete do %>
-        ✋<%= @tweet.favorites.count %> 参加希望
+        ✋<%= @tweet.favorites.count %> 参加希望！
       <% end %>
     </p>
   <% else %>
