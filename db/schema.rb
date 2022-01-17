@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_022052) do
     t.integer "tweet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "tweet_id"], name: "index_favorites_on_user_id_and_tweet_id", unique: true
   end
 
   create_table "tweets", force: :cascade do |t|

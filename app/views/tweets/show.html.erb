@@ -7,14 +7,15 @@
 
 <p>
   <strong>投稿者:</strong>
-  <%= @users[@tweet.user_id - 1].name %>
+  <%= @users.find_by(id: @tweet.user_id).name %>
+
 </p>
 <% if @tweet.id == current_user.id %>
   <%= link_to '編集', edit_tweet_path(@tweet) %>
 <% end %>|
 <%= link_to '戻る', tweets_path %>
 
-<% if @tweet.id != current_user.id %>
+<% if @tweet.user_id != current_user.id %>
   <% if @tweet.favorited_by?(current_user) %>
     <p>
       <%= link_to tweet_favorites_path(@tweet), method: :delete do %>

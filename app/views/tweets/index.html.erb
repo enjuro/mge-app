@@ -7,6 +7,7 @@
     <tr>
       <th>内容</th>
       <th>投稿者</th>
+      <th>投稿日時</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +16,9 @@
     <% @tweets.each do |tweet| %>
       <tr>
         <td><%= tweet.content %></td>
-        <td><%= @users[tweet.user_id - 1].name %>
+        <td><%= @users.find_by(id: tweet.user_id).name %>
+        <td><%= tweet.created_at.strftime("%m/%d %H:%M") %></td>
+        <td>参加希望<%= tweet.favorites.count %>人</td>
         <td><%= link_to '詳細', tweet %></td>
         <% if tweet.user_id == current_user.id %>
           <td><%= link_to '編集', edit_tweet_path(tweet) %></td>
@@ -29,3 +32,4 @@
 <br>
 
 <%= link_to "募集する", new_tweet_path, class:"btn btn-lg btn-primary" %>
+
