@@ -1,9 +1,12 @@
-<% if tweet.favorited_by?(current_user) %>
-  <%= link_to tweet_favorites_path(@tweet), method: :delete, remote: true do %>
-  ♥<%= tweet.favorites.count %>いいね
-  <% end %>
+<% if @tweet.favorited_by?(current_user) %>
+  <p>
+    <%= link_to tweet_favorites_path(@tweet), method: :delete, remote: true do %>
+      ✋<%= @tweet.favorites.count %> 参加希望！
+    <% end %>
+  </p>
 <% else %>
-  <%= link_to tweet_favorites_path(@tweet), method: :post, remote: true do %>
-  ♡<%= tweet.favorites.count %>いいね
-  <% end %>
+  <p>
+    <%= link_to tweet_favorites_path(@tweet), method: :post, remote: true do %>
+      ✊<%= @tweet.favorites.count %> 参加を希望する
+    <% end %>
 <% end %>
