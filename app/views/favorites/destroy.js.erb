@@ -1,1 +1,1 @@
-$('#favorite_buttons_<%= @tweet.id %>').html("<%= j(render "favorites/favorites", tweet: @tweet) %>");
+$('favorite_btn_<%= @tweet.id %>').html("<%= j(render partial "favorites/favorite", locals: {tweet: @tweet}) %>");
