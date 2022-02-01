@@ -1,7 +1,7 @@
 <% if tweet.favorited_by?(current_user) %>
   <p>
     <%= link_to tweet_favorites_path(tweet), method: :delete, remote: true, class: "favorite_btn" do %>
-      ✋<%= tweet.favorites.count %> 参加希望！
+      ✋<%= tweet.favorites.count %> 参加希望中！
     <% end %>
   </p>
 <% else %>
@@ -11,5 +11,3 @@
     <% end %>
   </p>
 <% end %>
-
-<h1>test</h1>
